@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "eureka.client.fetch-registry.service-url.defaultZone",
+      "type": "java.lang.String",
+      "description": "Description for eureka.client.fetch-registry.service-url.defaultZone."
+  }
+] }
