@@ -12,7 +12,7 @@
     <artifactId>cloud-consumer-order80</artifactId>
 
     <dependencies>
-        <!--Eureka提供端-->
+        <!--Eureka提供端   Eureka中已经引入ribbon-->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>

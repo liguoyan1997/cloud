@@ -29,5 +29,5 @@ eureka:
   instance:
     instance-id: payment8001
     prefer-ip-address: true   #鼠标放上去左下角显示IP
-    lease-renewal-interval-in-seconds:  1
-    lease-expiration-duration-in-seconds:  2
+    lease-renewal-interval-in-seconds:  1   #发送心跳的平吕
+    lease-expiration-duration-in-seconds:  2  #发送心跳的超时时间
