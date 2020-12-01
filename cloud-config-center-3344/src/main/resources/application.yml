@@ -8,10 +8,26 @@ spring:
       server:
         git:
           uri: https://github.com/liguoyan1997/sprincloud-config.git
+          #搜索目录
           search-paths:
             - sprincloud-config
+      #读取分支
       label: main
+  #ribbitmq相关配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: guest
+    password: guest
+#服务注册到Eureka
 eureka:
   client:
     service-url:
       defaultZone:  http://localhost:7001/eureka
+
+#暴露bus刷新配置端点
+management:
+  endpoints:
+    web:
+      exposure:
+        include: 'bus-refresh'
