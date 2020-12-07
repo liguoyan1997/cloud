@@ -1,5 +1,3 @@
-# cloud
-cloud组件
 服务调用
 ribbon
 1.是一个负载均衡，服务调用的客户端工具
@@ -38,7 +36,6 @@ gateway新一代网关
 断言 就是实现一组匹配规则，让请求过来找到对应的ROUTE处理
 过滤
 
-
 服务配置
 服务太多  需要有个集中式的，动态的配置管理
 分布式配置管理
@@ -54,3 +51,21 @@ bootstrap.yml 是系统级的是最高优先级 高于application.yml 是用户�
  curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
  curl -X POST "http://localhost:分布式配置中心端口号/actuator/bus-refresh/微服务名称:需要定点通知的微服务实例端口号"
 
+springcloud stream
+可以不再关注mq的细节，用一种适配绑定的方式，在多个mq之间切换
+binder(绑定器):input 消息生产者  消息消费者
+发布-订阅模式  topic主题广播 在ribbit中是Exchange  在kafka中是topic
+通过绑定器binder作为中间层，实现应用程序与消息中间件之间的隔离
+binder 很方便的连接中间件
+Channel 就相当于队列 实现存储转发
+source sink  消息的输入输出 （生产者 消费者）
+@EnableBinding(Source.class)  消息生产者的发送管道
+分组
+不同的组可以全面消费(重复消费)
+同一个组内会发生竞争关系，只有其中一个可以消费。
+故障现象 ：重复消费
+导致原因 ：默认分组是不同的。组流水好不一样，被认为不同组，可以重复消费
+同一个组只有一个可以消费
+持久化
+无分组属性配置，后台没有打出来消息
+有分组属性配置，后台打出来了MQ上的消息
