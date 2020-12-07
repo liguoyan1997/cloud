@@ -43,3 +43,14 @@ gateway新一代网关
 服务太多  需要有个集中式的，动态的配置管理
 分布式配置管理
 bootstrap.yml 是系统级的是最高优先级 高于application.yml 是用户级的
+
+消息总线 Bus
+配合config实现动态刷新
+1.利用消息总线触发一个客户端bus/refresh，刷新所有客户端的设置
+2.利用消息总线触发一个服务端ConfigServer的bus/refresh端点，刷新所有客户端的设置
+选择通知总控方式   进而全局通知  通知客户端可能会挂掉
+一次修改  广播通知  处处生效 curl -X POST "http://localhost:3344/actuator/bus-refresh"
+定点通知
+ curl -X POST "http://localhost:3344/actuator/bus-refresh/config-client:3355"
+ curl -X POST "http://localhost:分布式配置中心端口号/actuator/bus-refresh/微服务名称:需要定点通知的微服务实例端口号"
+
